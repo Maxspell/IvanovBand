@@ -1,0 +1,38 @@
+﻿@model IvanovBand.WebUI.Models.VideosListViewModel
+
+@{
+    ViewBag.Title = "Видео группы Ivanov Vibe Band, вибрафон - Иннокентий Иванов. Джаз, фьюжн, этно-джаз";
+    Layout = "~/Views/Shared/_MasterLayout.cshtml";
+}
+
+@section LeftSection
+{
+    <div class="video-list">
+        <h2>Видео</h2>
+        <div class="info">
+            <p>На этой странице представлены видео с различных концертов <a href="/about">Ivanov Vibe Band</a> - квинтета под руководством вибрафониста <a href="/about/1/innokentij-ivanov">Иннокентия Иванова</a>.
+Концерты проходили в таких клубах как: «Клуб Радио-сити», «Клуб Алексея Козлова», «Олимпиада-80» и других.</p>
+        </div>
+        <ul>
+        @foreach (var v in Model.Videos)
+        {
+            <li>
+               <div class="img">
+                   <a href="@Url.Action("Details", new { id = v.VideoID, seoName = FriendlyUrlHelpers.GetSeoName(v.Title) })">
+                      @Html.Image(Url.Content("~/content/uploads/images/" + v.Image), v.Title, new { title = v.Title, @class = "img-border" })
+                   </a>
+               </div>
+                <div class="date">@v.Date.ToShortDateString()</div>
+                <div class="title">@Html.ActionLink(v.Title, "Details", new { id = v.VideoID, seoName = FriendlyUrlHelpers.GetSeoName(v.Title) })</div>
+            </li>
+        }
+        </ul>
+    </div>
+    <div class="pager">
+        @Html.PageLinks(Model.PagingInfo, x => Url.Action("List", new {page = x})) 
+    </div>    
+}
+@section RightSection
+{
+    @Html.Partial("_SocialBox")
+}

@@ -1,0 +1,29 @@
+﻿@model IvanovBand.Domain.Entities.Article
+
+    <tr>
+        <td>
+            @Html.DisplayFor(m => m.Date)
+        </td>
+        <td>
+            @Html.ActionLink(Model.Title, "Edit", new { articleId = Model.ArticleID })
+        </td>
+        <td>
+            @Html.DisplayFor(m => m.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(m => m.Text)
+        </td>
+        <td>
+            @Html.DisplayFor(m => m.ImagePath)
+        </td>
+        <td>
+            @Html.DisplayFor(m => m.Category)
+        </td>
+        <td>
+            @using (Html.BeginForm("Delete", "Article"))
+            {
+                @Html.Hidden("ArticleID", Model.ArticleID)
+                <input type="submit" value="Delete" />
+            }
+        </td>
+    </tr>

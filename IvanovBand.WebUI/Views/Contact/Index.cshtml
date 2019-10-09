@@ -1,0 +1,25 @@
+﻿@{
+    ViewBag.Title = "Контакты Ivanov Vibe Band";
+    Layout = "~/Views/Shared/_MasterLayout.cshtml";
+}
+
+@section LeftSection
+{
+    <div class="contact-box">
+        <h2>Контакты</h2>
+        <div class="item">
+            <div class="img">
+               <img class="img-border" src="~/Content/Uploads/Images/logo-ivb.jpg" />
+            </div>
+            <div class="info">
+                <h4>Организация концертов</h4>
+                <div class="phone">Тел: +7(915) 128-13-00</div>
+                <div class="email">E-mail: <a href="mailto:info@ivanovband.com">info@ivanovband.com</a></div>
+            </div>
+        </div>
+    </div>
+}
+@section RightSection
+{
+    @Html.Partial("_SocialBox")
+}

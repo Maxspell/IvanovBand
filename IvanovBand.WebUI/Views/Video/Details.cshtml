@@ -1,0 +1,45 @@
+﻿@model IvanovBand.Domain.Entities.Video
+
+@{
+    ViewBag.Title = "Видео | " + Model.Title;
+    Layout = "~/Views/Shared/_MasterLayout.cshtml";
+}
+
+@section HeadSection 
+{
+    <script src="@Url.Content("~/Content/jwplayer/jwplayer.js")"></script>
+    <script type="text/javascript">jwplayer.key = "I8lFEjcxmosdycobQfsbnDBCXtlYbxw/6A11iQ==";</script>
+    <meta property="og:title" content="@Model.Title" />
+    <meta property="og:image" content="@Html.AbsoluteImagePath("/content/uploads/images/", Model.Image)" />
+}
+
+@section LeftSection
+{
+    <div class="video-box">
+        <div class="date">@Model.Date.ToShortDateString()</div>
+        <h2>@Model.Title</h2>
+        <div class="video-wrapper">
+            @if (!string.IsNullOrEmpty(Model.File))
+            {
+            <div id="video">Loading the player...</div>
+            <script type="text/javascript">
+                jwplayer("video").setup({
+                    file: '/content/uploads/video/@(Model.File)',
+                    image: '/content/uploads/images/@(Model.Image)'
+                });
+            </script>
+            }
+            else
+            {
+                @Html.Raw(HttpUtility.HtmlDecode(Model.Content))
+            }
+        </div>
+        <div class="social">@Html.Partial("_ShareButtons")</div>
+    </div>
+}
+
+@section RightSection
+{
+    @Html.Partial("_Ad-290x400")
+}
+

@@ -1,0 +1,33 @@
+﻿@model IEnumerable<IvanovBand.Domain.Entities.Song>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="btn-box">
+    @Html.ActionLink("Создать", "Create", "Song", null, new { @class = "btn" })
+</div>
+<table class="content-table">
+    <tr>
+       <th>ID</th>
+       <th>Название</th>
+       <th>Ссылка</th>
+       <th>Порядок</th>
+    </tr>
+@foreach (var s in Model)
+{
+  <tr>
+    <td>@s.SongID</td>
+    <td>@Html.ActionLink(s.Title, "Edit", new { s.SongID })</td>
+    <td>@s.Link</td>
+    <td>@s.Order</td>
+    <td>@using (Html.BeginForm("Delete", "Song")) 
+        {
+            @Html.Hidden("SongID", s.SongID)
+            <input type="submit" value="Delete"/>
+        }
+   </td>
+  </tr>
+}
+</table>

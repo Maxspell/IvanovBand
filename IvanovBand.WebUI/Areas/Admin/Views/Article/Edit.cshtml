@@ -1,0 +1,26 @@
+﻿@model IvanovBand.Domain.Entities.Article
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("Edit", "Article", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div class="editor-field">@Html.EditorFor(m => m.ArticleID)</div>
+    <div class="editor-label">@Html.LabelFor(m => m.Date)</div>
+    <div class="editor-field">@Html.EditorFor(m => m.Date)</div>
+    <div class="editor-label">@Html.LabelFor(m => m.Title)</div>
+    <div class="editor-field">@Html.EditorFor(m => m.Title)</div>
+    <div class="editor-label">@Html.LabelFor(m => m.Description)</div>
+    <div class="editor-field">@Html.TextAreaFor(m => m.Description, new { @class = "text-box multi-line", rows = "5" })</div>
+    <div class="editor-label">@Html.LabelFor(m => m.Text)</div>
+    <div class="editor-field">@Html.TextAreaFor(m => m.Text, new { @class = "ckeditor" })</div>
+    <div class="editor-label">@Html.LabelFor(m => m.Category)</div>
+    <div class="editor-field">@Html.EditorFor(m => m.Category)</div>
+    <div class="editor-field">@Html.EditorFor(m => m.ImagePath)</div>
+    <div class="editor-label"><label for="File">Изображение</label></div>
+    <div class="editor-field"><input type="file" name="file" /></div>
+    <input type="submit" class="btn" value="Сохранить" />
+    @Html.ActionLink("Отменить", "Index", "Article", null, new { @class = "btn" })
+}

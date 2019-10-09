@@ -1,0 +1,39 @@
+﻿@model IvanovBand.WebUI.Models.ArticlesListViewModel
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="btn-box">
+    @Html.ActionLink("Создать", "Create", "Article", null, new { @class = "btn" })
+</div>
+<table class="content-table">
+    <tr>
+       <th>ID</th>
+       <th>Дата</th>
+       <th>Заголовок</th>
+       <th>Изображение</th>
+       <th>Категория</th>
+    </tr>
+@foreach (var a in Model.Articles)
+{
+  <tr>
+    <td>@a.ArticleID</td>
+    <td>@a.Date.ToShortDateString()</td>
+    <td>@Html.ActionLink(a.Title, "Edit", new { a.ArticleID })</td>
+    <td>@a.ImagePath</td>
+    <td>@a.Category</td>
+    <td>@using (Html.BeginForm("Delete", "Article")) 
+        {
+            @Html.Hidden("ArticleID", a.ArticleID)
+            <input type="submit" value="Delete"/>
+        }
+   </td>
+  </tr>
+}
+</table>
+
+<div class="pager">
+    @Html.PageLinks(Model.PagingInfo, x => Url.Action("Index", new {page = x, category = Model.CurrentCategory}))
+</div>

@@ -1,0 +1,23 @@
+﻿@model IvanovBand.WebUI.Models.LogOnViewModel
+
+@{
+    ViewBag.Title = "Admin: Log in";
+    Layout = "~/Areas/Admin/Views/Shared/_LogLayout.cshtml";
+}
+
+<div class="form-box">
+@using (Html.BeginForm("LogOn", "Account", FormMethod.Post, new { @class = "form-container" }))
+{
+    @Html.ValidationSummary(true)
+    <div class="form-title"><h2>Вход</h2></div>
+    <div class="form-title">Логин</div>
+    @Html.TextBoxFor(m => m.UserName, new { @class = "form-field" })
+    @Html.ValidationMessageFor(m => m.UserName)
+    <div class="form-title">Пароль</div>
+    @Html.PasswordFor(m => m.Password, new { @class = "form-field" })
+    @Html.ValidationMessageFor(m => m.Password) 
+   <div class="submit-container">
+     <input class="submit-button" type="submit" value="Войти" />
+   </div>
+}
+</div>

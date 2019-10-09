@@ -1,0 +1,14 @@
+﻿@{
+    ViewBag.Title = "Видео";
+    Layout = "~/Views/Shared/_MasterLayout.cshtml";
+}
+
+<h2>Index</h2>
+<div id="myElement">Loading the player...</div>
+
+    <script type="text/javascript">
+        jwplayer("myElement").setup({
+            file: "/content/uploads/lWMJeVvV-364767.mp4",
+            image: "/content/uploads/myPoster.jpg"
+        });
+    </script>

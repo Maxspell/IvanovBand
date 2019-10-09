@@ -1,0 +1,21 @@
+﻿@model IvanovBand.Domain.Entities.Member
+
+@{
+    ViewBag.Title = "Биография | " + Model.Name + " - " + Model.Instrument;
+    Layout = "~/Views/Shared/_MasterLayout.cshtml";
+}
+
+@section LeftSection
+{
+    <div class="member-box">
+        <h2>@Model.Name</h2>
+        <div class="img">
+            @Html.Image(Url.Content("~/content/uploads/images/" + Model.Image), Model.Name, new { title = Model.Name, @class = "img-border" })
+        </div>
+        <div class="descr">@Model.Text</div>
+    </div>
+}
+@section RightSection
+{
+    @Html.Partial("_SocialBox")
+}

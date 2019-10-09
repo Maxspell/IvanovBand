@@ -1,0 +1,28 @@
+﻿@{
+    Layout = "~/Areas/Admin/Views/Shared/_MasterLayout.cshtml";
+}
+@section HeadSection 
+{
+    <link href="@Url.Content("~/Areas/Admin/Content/admin.css")" rel="stylesheet" type="text/css" />
+    <script src="@Url.Content("~/Areas/Admin/Content/ckeditor/ckeditor.js")"></script>
+}
+@if (TempData["message"] != null)
+{
+    <div class="message">@TempData["message"]</div>
+}
+<div class="upper-menu-container">
+   <div class="menu-wrapper">
+     <ul>
+       <li>@Html.ActionLink("Домой", "Index", "Home")</li>
+       <li>@Html.ActionLink("Промо", "Index", "Slide")</li>
+       <li>@Html.ActionLink("Статьи", "Index", "Article")</li>
+       <li>@Html.ActionLink("Музыка", "Index", "Song")</li>
+       <li>@Html.ActionLink("Видео", "Index", "Video")</li>
+       <li>@Html.ActionLink("Состав", "Index", "Member")</li>
+       <li>@Html.ActionLink("Афиша", "Index", "Concert")</li>
+     </ul>
+   </div>
+</div>
+<div class="wrapper">
+@RenderBody()
+</div>

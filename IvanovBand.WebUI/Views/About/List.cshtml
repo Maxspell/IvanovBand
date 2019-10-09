@@ -1,0 +1,57 @@
+﻿@model IEnumerable<IvanovBand.Domain.Entities.Member>
+
+@{
+    ViewBag.Title = "Биография Ivanov Vibe Band. Вибрафон, джаз, фьюжн, этно-джаз";
+    Layout = "~/Views/Shared/_MasterLayout.cshtml";
+}
+
+@section LeftSection
+{
+    <div class="bio-box">
+        <h2>Биография</h2>
+        <div class="wrapper">
+            <div class="img">
+                 <img class="img-border" src="~/Content/Uploads/Images/ivb-main.jpg" />
+            </div>
+            <div class="info">
+                <p>Представитель джазовых вибрафонистов новой волны Иннокентий Иванов создал группу
+Ivanov Vibe Band совместно с контрабасистом Вячеславом Ахметзяновым в 2008 году. Не самый
+популярный инструмент вибрафон они решили разнообразить контрабасом, гитарой, саксофоном
+и барабанами, пригласив в команду профессиональных джазовых музыкантов.</p>
+                <p>Первое выступление состоялось в октябре 2008 года на фестивале "Драм Джем в Дубне".
+Презентация концертной программы прошла в марте 2009 года в клубе "Cool Train", в качестве
+барабанщика к коллективу присоединился Павел Кован. Уже следующий концерт на сцене
+Театра музыки и поэзии под руководством Е. Камбуровой прошел в квартете - клавишником был
+приглашен Игорь Гереклиев.</p>
+                <p>С момента создания коллектива состав менялся, пополнялся новыми талантливыми музыкантами.
+На сегодняшний день IVB - квинтет с солирующими вибрафоном и саксофоном (Антон Залетаев).
+Коллектив позиционирует себя как фьюжн-джазовый проект. Стили: этно-джаз, джаз-рок, латин,
+свинг, би-боп.</p>
+                <p>За несколько лет IVB, выступая на сценах ведущих московских джаз-клубов, завоевал
+популярность среди поклонников фьюжн-джаза, мейнстрима и латинской музыки.</p>
+            </div>
+        </div>
+    </div>
+    <div class="member-list">
+        <h2>Состав</h2>
+        @foreach (var m in Model)
+        {
+            <div class="item">
+               <div class="img">
+                  <a href="@Url.Action("Details", new { id = m.MemberID, seoName = FriendlyUrlHelpers.GetSeoName(m.Name) })">
+                      @Html.Image(Url.Content("~/content/uploads/images/" + m.Image), m.Name, new { title = m.Name, @class = "img-border" })
+                  </a>
+               </div>
+               <div class="info">  
+                    <h3><a href="@Url.Action("Details", new { id = m.MemberID, seoName = FriendlyUrlHelpers.GetSeoName(m.Name) })">@m.Name</a></h3>
+                    <div class="descr">@m.Description</div>
+                    <div class="instrument">Инструмент: @m.Instrument</div>
+               </div>
+            </div>
+        }
+    </div>  
+}
+@section RightSection
+{
+    @Html.Partial("_SocialBox")
+}

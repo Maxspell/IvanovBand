@@ -1,0 +1,34 @@
+﻿@model IEnumerable<IvanovBand.Domain.Entities.Song>
+
+@{
+    ViewBag.Title = "Музыка группы Ivanov Vibe Band, вибрафон - Иннокентий Иванов. Джаз, фьюжн, этно-джаз";
+    Layout = "~/Views/Shared/_MasterLayout.cshtml";
+}
+
+@section HeadSection 
+{
+    <script src="@Url.Content("~/content/audiojs/audio.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/scripts/audiojsInitialise.js")" type="text/javascript"></script>
+}
+
+@section LeftSection
+{
+    <h2>Музыка</h2>
+    <div class="info">
+        <p>На данный момент на этой странице можно послушать записи с онлайн-концерта проходившего в студии Jivoe.tv осенью 2011 года.
+В составе: <a href="/about/1/innokentij-ivanov">Иннокентий Иванов</a>, <a href="/about/2/anton-zaletaev">Антон Залетаев</a>, Александр Горох, <a href="/about/4/vyacheslav-ahmetzyanov">Вячеслав Ахметзянов</a> и Дмитрий Власенко.</p>
+    </div>
+<div class="music-box">
+  <audio preload="auto"></audio>
+    <ol>
+    @foreach(var m in Model)
+    {
+        <li><a href="#" data-src="@Url.Content("~/content/uploads/audio/" + m.Link)">@m.Title</a></li>
+    }
+    </ol>
+</div>
+}
+@section RightSection
+{
+    @Html.Partial("_SocialBox")
+}

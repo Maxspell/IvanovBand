@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<mvcSiteMap xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xmlns="http://mvcsitemap.codeplex.com/schemas/MvcSiteMap-File-4.0"
+            xsi:schemaLocation="http://mvcsitemap.codeplex.com/schemas/MvcSiteMap-File-4.0 MvcSiteMapSchema.xsd">
+
+  <mvcSiteMapNode title="Home" controller="Home" action="Index">
+    <mvcSiteMapNode title="Article" controller="Article" action="List">
+      <mvcSiteMapNode title="" controller="Article" action="Details" dynamicNodeProvider="IvanovBand.WebUI.Infrastructure.Concrete.ArticleDynamicNodeProvider, IvanovBand.WebUI"/>
+    </mvcSiteMapNode>
+    <mvcSiteMapNode title="Music" controller="Song" action="Index"/>
+    <mvcSiteMapNode title="Video" controller="Video" action="List">
+      <mvcSiteMapNode title="" controller="Video" action="Details" dynamicNodeProvider="IvanovBand.WebUI.Infrastructure.Concrete.VideoDynamicNodeProvider, IvanovBand.WebUI"/>
+    </mvcSiteMapNode>
+    <mvcSiteMapNode title="About" controller="About" action="List">
+      <mvcSiteMapNode title="" controller="About" action="Details" dynamicNodeProvider="IvanovBand.WebUI.Infrastructure.Concrete.MemberDynamicNodeProvider, IvanovBand.WebUI"/>
+    </mvcSiteMapNode>
+    <mvcSiteMapNode title="Contacts" controller="Contact" action="Index"/>
+  </mvcSiteMapNode>
+
+</mvcSiteMap>

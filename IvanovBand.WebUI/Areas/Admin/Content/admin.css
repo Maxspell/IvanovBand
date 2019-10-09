@@ -1,0 +1,145 @@
+﻿html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+body {
+    background: url("/areas/admin/content/images/subtle_grunge.png") repeat scroll 0 0 transparent;
+    font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif;
+    color: #999999;
+}
+a {
+    color: #0099CC;
+}
+ul {
+    list-style: none;
+}
+.btn {
+    background-color: #0099CC;
+    border: medium none;
+    color: #FFFFFF;
+    cursor: pointer;
+    font-size: 100%;
+    padding: 5px 13px;
+    text-decoration: none;
+}
+.btn:hover {
+    background-color: #b51de9;
+}
+.btn-box {
+    margin: 0 0 15px;
+}
+input.btn[type="submit"] {
+    padding: 3px 13px;
+}
+textarea:focus, input[type="text"]:focus {
+	border: 1px solid #0099CC;
+}
+.text-box {
+    border: 1px solid #B6B6B6;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.15);
+}
+.single-line,
+.multi-line  {
+    width: 100%;
+}
+.upper-menu-container {
+    background: none repeat scroll 0 0 #333333;
+    height: 50px;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+.menu-wrapper {
+    padding: 15px 0 0 0;
+    margin : 0 auto;
+    width: 960px;
+}
+.menu-wrapper ul {
+    list-style: none; 
+}
+.menu-wrapper li {
+    display: inline-block;
+    margin: 0 15px 0 0; 
+}
+.menu-wrapper li a {
+    color: #ffffff;
+    text-transform: uppercase;
+    text-decoration: none;
+}
+.menu-wrapper li a:hover {
+    color: #00b9ff; 
+}
+.wrapper {
+    margin : 100px auto 30px;
+    width: 960px;
+}
+.content-table { 
+    width: 100%;
+    border: 2px solid #808080;
+    background: #ffffff;
+    border-collapse: collapse;
+}
+.content-table tr:hover {
+    background: #f7f7f7;
+} 
+.content-table th {
+    color: #333333;
+    background: #f7f7f7; 
+    text-align: center; 
+    padding: 5px; 
+    border: 1px solid #cccccc;
+}
+.content-table td { 
+    padding: 5px;
+    border: 1px solid #cccccc;
+    text-align: center;
+}
+.editor-field  {
+    margin: 0 0 20px;
+}
+.pager  {
+    margin: 15px 0;
+}
+.pager-list li {
+    background-color: #0099CC;
+    cursor: pointer;
+    display: inline-block;
+    margin-right: 2px;
+    text-align: center;
+}
+.pager-list li.selected {
+    opacity: 0.35;
+    cursor: default;
+}
+.pager-list li.selected:hover {
+    background-color: #0099CC;
+}
+.pager-list li:hover {
+    background-color: #b51de9;
+}
+.pager-list a,
+ .pager-list span {
+    color: #FFFFFF;
+    display: block;
+    line-height: 1.4;
+    padding: 5px 13px;
+    text-decoration: none;
+}
+  

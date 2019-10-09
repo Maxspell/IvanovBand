@@ -1,0 +1,19 @@
+﻿@model IvanovBand.Domain.Entities.Song
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("Edit", "Song", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div class="editor-field">@Html.EditorFor(s => s.SongID)</div>
+    <div class="editor-label">@Html.LabelFor(s => s.Title)</div>
+    <div class="editor-field">@Html.EditorFor(s => s.Title)</div>
+    <div class="editor-label"><label for="File">Ссылка на файл</label></div>
+    <div class="editor-field"><input type="file" name="file" /></div>
+    <div class="editor-label">@Html.LabelFor(s => s.Order)</div>
+    <div class="editor-field">@Html.EditorFor(s => s.Order)</div>
+    <input type="submit" class="btn" value="Сохранить" />
+    @Html.ActionLink("Отменить", "Index", "Song", null, new { @class = "btn" })
+}

@@ -1,0 +1,19 @@
+﻿@model IEnumerable<IvanovBand.Domain.Entities.Article>
+
+<div class="more-list">
+    <h2>Еще новости</h2>
+    @foreach(var m in Model)
+    {
+        <div class="item">
+            <div class="img">
+                <a href="@Url.Action("Details", new { id = m.ArticleID, seoName = FriendlyUrlHelpers.GetSeoName(m.Title) })">
+                    @Html.Image(Url.Content("~/content/uploads/images/" + m.ImagePath), m.Title, new { title = m.Title, @class = "img-border" })
+                </a>
+            </div>
+            <div class="info">
+                <div class="date">@m.Date.ToShortDateString()</div>
+                <div class="title">@Html.ActionLink(m.Title, "Details", new { id = m.ArticleID, seoName = FriendlyUrlHelpers.GetSeoName(m.Title) })</div>
+            </div>
+        </div>
+    }
+</div>

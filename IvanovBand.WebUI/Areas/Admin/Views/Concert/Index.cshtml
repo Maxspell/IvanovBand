@@ -1,0 +1,32 @@
+﻿@model IEnumerable<IvanovBand.Domain.Entities.Concert>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="btn-box">
+    @Html.ActionLink("Создать", "Create", "Concert", null, new { @class = "btn" })
+</div>
+<table class="content-table">
+    <tr>
+        <th>ID</th>
+        <th>Дата</th>
+        <th>Контент</th>
+    </tr>
+    @foreach (var m in Model)
+    {
+        <tr>
+            <td>@Html.ActionLink(m.ConcertId.ToString(), "Edit", new { m.ConcertId })</td>
+            <td>@m.Date.ToShortDateString()</td>
+            <td>@m.Content</td>
+            <td>
+                @using (Html.BeginForm("Delete", "Concert"))
+                {
+                    @Html.Hidden("ConcertId", m.ConcertId)
+                    <input type="submit" value="Delete" />
+                }
+        </td>
+    </tr>
+    }
+</table>

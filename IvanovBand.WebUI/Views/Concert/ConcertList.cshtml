@@ -1,0 +1,17 @@
+﻿@model IEnumerable<IvanovBand.Domain.Entities.Concert>
+
+<div class="item">
+<h2>Афиша</h2>
+    @foreach (var m in Model)
+    {
+        <div class="page5-box2">
+            <div class="inner1 p26">
+                <time datetime="@m.Date" class="time1 p19">@m.Date.Day<span>@m.Date.ToString("MMMM")</span></time>
+            </div>
+            <div class="extra-wrap">
+                <span class="color2">@m.Content</span>
+            </div>
+            <div class="clear"></div>
+        </div>
+    }
+</div>

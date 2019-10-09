@@ -1,0 +1,21 @@
+﻿@model IvanovBand.Domain.Entities.Slide
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("Edit", "Slide", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div class="editor-field">@Html.EditorFor(s => s.SlideID)</div>
+    <div class="editor-label">@Html.LabelFor(s => s.Title)</div>
+    <div class="editor-field">@Html.EditorFor(s => s.Title)</div>
+    <div class="editor-label"><label for="File">Изображение</label></div>
+    <div class="editor-field"><input type="file" name="file" /></div>
+    <div class="editor-label">@Html.LabelFor(s => s.Link)</div>
+    <div class="editor-field">@Html.EditorFor(s => s.Link)</div>
+    <div class="editor-label">@Html.LabelFor(s => s.Order)</div>
+    <div class="editor-field">@Html.EditorFor(s => s.Order)</div>
+    <input type="submit" class="btn" value="Сохранить" />
+    @Html.ActionLink("Отменить", "Index", "Slide", null, new { @class = "btn" })
+}

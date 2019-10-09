@@ -1,0 +1,27 @@
+﻿@model IEnumerable<IvanovBand.Domain.Entities.Slide>
+
+<div class="slider-wrapper theme-default">
+    <div id="slider" class="nivoSlider">
+        @foreach(var m in Model)
+        {
+            if (String.IsNullOrEmpty(m.Link))
+            {
+                @Html.Image(Url.Content("~/content/uploads/images/" + m.Image), m.Title, "")
+            }
+            else
+            {
+                <a href="@m.Link">@Html.Image(Url.Content("~/content/uploads/images/" + m.Image), m.Title, "")</a>
+            }
+        }
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(window).load(function() {
+        $('#slider').nivoSlider({
+            effect: 'fade',
+            animSpeed: 1000,
+            pauseTime: 20000
+        });
+    });
+</script>

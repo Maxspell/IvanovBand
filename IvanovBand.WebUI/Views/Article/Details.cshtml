@@ -1,0 +1,32 @@
+﻿@model IvanovBand.Domain.Entities.Article
+
+@{
+    ViewBag.Title = "Новости | " + Model.Title;
+    Layout = "~/Views/Shared/_MasterLayout.cshtml";
+}
+
+@section HeadSection 
+{
+    <meta property="og:title" content="@Model.Title" />
+    <meta property="og:description" content="@Model.Description" />
+    <meta property="og:image" content="@Html.AbsoluteImagePath("/content/uploads/images/", Model.ImagePath)" />
+}
+
+@section LeftSection
+{
+    <div class="news-box">
+        <div class="date">@Model.Date.ToShortDateString()</div>
+        <h2>@Model.Title</h2>
+        <div class="img">
+            @Html.Image(Url.Content("~/content/uploads/images/" + Model.ImagePath), Model.Title, new { title = Model.Title, @class = "img-border" })
+        </div>
+        <div class="text">@Html.Raw(HttpUtility.HtmlDecode(Model.Text))</div>
+        <div class="social">@Html.Partial("_ShareButtons")</div>
+        @Html.Partial("_Disqus")
+    </div>
+}
+
+@section RightSection
+{
+    @{ Html.RenderAction("MoreList", "Article", new { id = Model.ArticleID }); }
+}

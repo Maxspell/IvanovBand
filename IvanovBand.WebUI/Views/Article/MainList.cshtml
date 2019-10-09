@@ -1,0 +1,25 @@
+﻿@model IEnumerable<IvanovBand.Domain.Entities.Article>
+
+<div class="news-list">
+    <h1>Новости</h1>
+    @foreach(var m in Model)
+    {
+        <div class="item">
+            <div class="img">
+                <a href="@Url.Action("Details", "Article", new { id = m.ArticleID, seoName = FriendlyUrlHelpers.GetSeoName(m.Title) }, null)">
+                    @Html.Image(Url.Content("~/content/uploads/images/" + m.ImagePath), m.Title, new { title = m.Title, @class = "img-border" })
+                </a>
+            </div>
+            <div class="info">
+                <div class="date">@m.Date.ToShortDateString()</div>
+                <div class="title">@Html.ActionLink(m.Title, "Details", "Article", new { id = m.ArticleID, seoName = FriendlyUrlHelpers.GetSeoName(m.Title) }, null)</div>
+                <div class="descr">@m.Description</div>
+                <div class="inform">
+                    <a href="@Url.Action("Details", "Article", new { id = m.ArticleID, seoName = FriendlyUrlHelpers.GetSeoName(m.Title) }, null)">
+                        <i class="fa fa-comments"></i> <span class="disqus-comment-count" data-disqus-identifier="@Url.Action("Details", "Article", new { id = m.ArticleID, seoName = FriendlyUrlHelpers.GetSeoName(m.Title) }, null)">0</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    }
+</div>

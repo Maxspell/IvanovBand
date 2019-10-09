@@ -1,0 +1,39 @@
+﻿@model IvanovBand.WebUI.Models.VideosListViewModel
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="btn-box">
+    @Html.ActionLink("Создать", "Create", "Video", null, new { @class = "btn" })
+</div>
+<table class="content-table">
+    <tr>
+       <th>ID</th>
+       <th>Дата</th>
+       <th>Название</th>
+       <th>Изображение</th>
+       <th>Файл</th>
+    </tr>
+@foreach (var v in Model.Videos)
+{
+  <tr>
+    <td>@v.VideoID</td>
+    <td>@v.Date.ToShortDateString()</td>
+    <td>@Html.ActionLink(v.Title, "Edit", new { v.VideoID })</td>
+    <td>@v.Image</td>
+    <td>@v.File</td>
+    <td>@using (Html.BeginForm("Delete", "Video")) 
+        {
+            @Html.Hidden("VideoID", v.VideoID)
+            <input type="submit" value="Delete"/>
+        }
+   </td>
+  </tr>
+}
+</table>
+
+<div class="pager">
+    @Html.PageLinks(Model.PagingInfo, x => Url.Action("Index", new {page = x}))
+</div>

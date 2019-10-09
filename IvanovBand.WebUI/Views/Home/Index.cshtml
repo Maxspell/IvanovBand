@@ -1,0 +1,46 @@
+﻿@{
+    ViewBag.Title = "Джаз группа Ivanov Vibe Band, Иннокентий Иванов - вибрафон";
+    Layout = "~/Views/Shared/_MasterLayout.cshtml";
+}
+@section HeadSection 
+{
+    <meta name='yandex-verification' content='7169ffbd04609b97' />
+    <meta name="google-site-verification" content="A1wIdL3QD2eoZ0_PQAVoYWY0X8x7RCx2UZcn3_AWvB0" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/nivo-slider/nivo-slider.css")" type="text/css" media="screen" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/nivo-slider/themes/default/default.css")" type="text/css" media="screen" />
+    <script src="@Url.Content("~/Content/nivo-slider/jquery.nivo.slider.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Content/jwplayer/jwplayer.js")"></script>
+    <script type="text/javascript">jwplayer.key = "I8lFEjcxmosdycobQfsbnDBCXtlYbxw/6A11iQ==";</script>
+}
+@section SliderSection
+{
+    <div class="slider">
+        @{ Html.RenderAction("Index", "Slide"); }
+    </div>
+}
+@section LeftSection
+{
+    <div class="welcome-box">
+        <div class="img">
+           <a href="@Url.Action("List", "About")">
+             <img class="img-border" src="~/Content/Uploads/Images/ivb-main.jpg" />
+           </a>
+        </div>
+        <div class="info">
+            <h3><a href="@Url.Action("List", "About")">
+                Джаз группа Ivanov Vibe Band под руководством композитора и вибрафониста Иннокентия Иванова</a></h3>
+            <p>Музыкальный проект IVB объединяет музыкантов новой формации, обладающих современным, 
+                джазовым, музыкальным мышлением.</p>
+            <p>В репертуаре коллектива не только авторская музыка, но и джазовые стандарты в оригинальных 
+                аранжировках, в которых гармонично переплетаются различные джазовые стили.</p>
+            <p>В составе IVB – вибрафон, саксофон (флейта), гитара, контрабас, ударные.</p>
+        </div>
+    </div>
+    @{ Html.RenderAction("MainList", "Article"); }
+}
+@section RightSection
+{
+    @{ Html.RenderAction("ConcertList", "Concert"); }
+    @Html.Partial("_SocialBox")
+    <div class="item"><a target="_blank" href="http://www.bazaartistov.ru/" title="База Артистов - контакты всех артистов, фото и видео артистов"><img src="http://www.bazaartistov.ru/img/bazaartistov_230x96_black_hrom.gif" width="225" height="96" border="0"></a></div>
+}

@@ -1,0 +1,23 @@
+﻿@model IvanovBand.Domain.Entities.Video
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("Edit", "Video", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div class="editor-field">@Html.EditorFor(m => m.VideoID)</div>
+    <div class="editor-label">@Html.LabelFor(m => m.Title)</div>
+    <div class="editor-field">@Html.EditorFor(m => m.Title)</div>
+    <div class="editor-label">@Html.LabelFor(m => m.Date)</div>
+    <div class="editor-field">@Html.EditorFor(m => m.Date)</div>
+    <div class="editor-label">@Html.LabelFor(m => m.Content)</div>
+    <div class="editor-field">@Html.EditorFor(m => m.Content)</div>
+    <div class="editor-label"><label for="File">Изображение</label></div>
+    <div class="editor-field"><input type="file" name="imgFile" /></div>
+    <div class="editor-label"><label for="File">Файл</label></div>
+    <div class="editor-field"><input type="file" name="videoFile" /></div>
+    <input type="submit" class="btn" value="Сохранить" />
+    @Html.ActionLink("Отменить", "Index", "Video", null, new { @class = "btn" })
+}
